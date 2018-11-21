@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Chopin's List</string>
+    <string name="app_name">ChopinsList</string>
     <string name="txt_login">Login</string>
     <string name="txt_senha">Senha</string>
     <string name="btn_logar">Entrar</string>
     <string name="btn_cadas">Cadastrar</string>
+    <string name="txt_clogin">Digite o Login desejado:</string>
+    <string name="txt_csenha">Digite a senha desejado:</string>
+    <string name="txt_criarC">Finalizar Cadastro</string>
 </resources>
