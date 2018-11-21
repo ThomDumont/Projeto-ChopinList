@@ -7,4 +7,7 @@
     <string name="txt_clogin">Digite o Login desejado:</string>
     <string name="txt_csenha">Digite a senha desejado:</string>
     <string name="txt_criarC">Finalizar Cadastro</string>
+    <string name="btn_anunciar">Anunciar</string>
+    <string name="btn_mAnuncios">Meus Anuncios</string>
+    <string name="btn_todosAnuncios">Ver Anuncios</string>
 </resources>

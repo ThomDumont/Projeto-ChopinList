@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity">
+
+    <Button
+        android:id="@+id/btn_anunciar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/btn_anunciar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_vAnuncios"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:text="@string/btn_todosAnuncios"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_anunciar"
+        app:layout_constraintEnd_toStartOf="@+id/btn_anunciar"
+        app:layout_constraintTop_toTopOf="@+id/btn_anunciar" />
+
+    <Button
+        android:id="@+id/btn_mAnuncios"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:text="@string/btn_mAnuncios"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_config"
+        app:layout_constraintEnd_toStartOf="@+id/btn_config"
+        app:layout_constraintTop_toTopOf="@+id/btn_config"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_config"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="160dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/btn_anunciar"
+        app:layout_constraintTop_toBottomOf="@+id/btn_anunciar" />
+</android.support.constraint.ConstraintLayout>

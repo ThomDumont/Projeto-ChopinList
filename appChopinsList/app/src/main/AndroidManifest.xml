@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastrarActivity"></activity>
+        <activity android:name=".CadastrarActivity" />
+        <activity android:name=".MenuActivity"></activity>
     </application>
 
 </manifest>
