@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CadastrarActivity" />
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".AnunciarActivity"></activity>
     </application>
 
 </manifest>

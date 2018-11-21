@@ -8,6 +8,10 @@
     <string name="txt_csenha">Digite a senha desejado:</string>
     <string name="txt_criarC">Finalizar Cadastro</string>
     <string name="btn_anunciar">Anunciar</string>
-    <string name="btn_mAnuncios">Meus Anuncios</string>
-    <string name="btn_todosAnuncios">Ver Anuncios</string>
+    <string name="btn_mAnuncios">Meus anúncios</string>
+    <string name="btn_todosAnuncios">Ver anúncios</string>
+    <string name="txt_tituloanuncio">Digite o título do anúncio:</string>
+    <string name="txt_descricaoanuncio">Digite a descrição do anúncio:</string>
+    <string name="txt_criarA">Anúnciar!</string>
+
 </resources>
