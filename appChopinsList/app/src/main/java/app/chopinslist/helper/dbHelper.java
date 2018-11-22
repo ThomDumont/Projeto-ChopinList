@@ -81,8 +81,8 @@ public class dbHelper extends SQLiteOpenHelper {
     public boolean verificaUsuario(User u) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String busca = "SELECT  * FROM " + user + " WHERE "
-                + log + " = " + u.getLogin() + " AND " + sen + " = " + u.getSenha();
+        String busca = "SELECT * FROM " + user + " WHERE "
+                + log + " = '" + u.getLogin() + "' AND " + sen + " = '" + u.getSenha() +"'" ;
 
         Cursor c = db.rawQuery(busca, null);
 
