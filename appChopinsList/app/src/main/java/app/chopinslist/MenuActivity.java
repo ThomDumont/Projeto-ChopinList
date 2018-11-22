@@ -30,15 +30,23 @@ public class MenuActivity extends AppCompatActivity {
         btn_vAnuncios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(MenuActivity.this, Anuncio.class);
+                Intent it = new Intent(MenuActivity.this, vAnunciosActivity.class);
                 startActivity(it);
             }
         });
 
-        btn_config.setOnClickListener(new View.OnClickListener() {
+     /*   btn_config.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(MenuActivity.this, Config.class);
+                startActivity(it);
+            }
+        });*/
+
+        btn_mAnuncios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(MenuActivity.this, mAnunciosActivity.class);
                 startActivity(it);
             }
         });
