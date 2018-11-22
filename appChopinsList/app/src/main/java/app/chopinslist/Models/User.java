@@ -5,7 +5,8 @@ public class User {
 
     public User() {
     }
-    public User(String login, String senha) {
+    public User(String login, String senha){
+        this.setId(0);
         this.setLogin(login);
         this.setSenha(senha);
     }

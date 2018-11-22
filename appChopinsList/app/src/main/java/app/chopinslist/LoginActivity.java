@@ -13,15 +13,13 @@ import app.chopinslist.helper.dbHelper;
 public class LoginActivity extends AppCompatActivity {
     Button btn_logar, btn_cadastrar;
     EditText camp_login, camp_senha;
-    dbHelper db;
-    User u = new User();
+    dbHelper db = new dbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        db = new dbHelper(getApplicationContext());
 
 
 
@@ -36,12 +34,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String login = camp_login.getText().toString();
                 String senha = camp_senha.getText().toString();
-                u.setLogin(login);
-                u.setSenha(senha);
-                if(db.verificaUsuario(u)){
+                if(db.verificaUsuario(new User(login,senha))){
                     Intent it = new Intent(LoginActivity.this, MenuActivity.class);
                     startActivity(it);
-                 }else{
+                }else{
                     alert("Login e/ou senha incorretos");
                 }
             }

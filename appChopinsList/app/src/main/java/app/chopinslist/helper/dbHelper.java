@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class dbHelper extends SQLiteOpenHelper {
-    private static final String nome = "ChopinsList";
+    private static final String nome = "ChopinsList.db";
     private static  final int Versao = 1;
 
     //nome das tabelas
@@ -26,7 +26,6 @@ public class dbHelper extends SQLiteOpenHelper {
     //tabela anuncio
     private static final String tit = "titulo";
     private static final String desc = "descricao";
-
 
     //tabela usuario
     private static final String log = "login";
@@ -83,12 +82,11 @@ public class dbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String busca = "SELECT  * FROM " + user + " WHERE "
-                + log + " = " + u.getLogin() + "AND" + sen + " = " + u.getSenha();
+                + log + " = " + u.getLogin() + " AND " + sen + " = " + u.getSenha();
 
         Cursor c = db.rawQuery(busca, null);
 
         if(c == null){
-            c.close();
             return false;
         }
         else{
