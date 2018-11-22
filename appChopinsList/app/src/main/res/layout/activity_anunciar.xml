@@ -44,7 +44,7 @@
     <EditText
         android:id="@+id/txt_descricao"
         android:layout_width="347dp"
-        android:layout_height="327dp"
+        android:layout_height="286dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="16dp"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnAnunc"
         android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
