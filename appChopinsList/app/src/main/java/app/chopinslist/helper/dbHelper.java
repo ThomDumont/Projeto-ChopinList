@@ -210,10 +210,18 @@ public class dbHelper extends SQLiteOpenHelper {
             a.setTitulo(c.getString(w.getColumnIndex(tit)));
             a.setDesc(c.getString(w.getColumnIndex(desc)));
             todos.add(a);
+            w.close();
         }
         c.close();
+
         return todos;
 
+    }
+
+    public void closeDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null && db.isOpen())
+            db.close();
     }
 
 }
