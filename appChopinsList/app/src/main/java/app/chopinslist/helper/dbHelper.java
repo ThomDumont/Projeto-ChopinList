@@ -86,12 +86,12 @@ public class dbHelper extends SQLiteOpenHelper {
 
         Cursor c = db.rawQuery(busca, null);
 
-        if(c == null){
-            return false;
-        }
-        else{
+        if(c!=null && c.getCount()>0){
             c.close();
             return true;
+        }
+        else{
+            return false;
         }
     }
 
