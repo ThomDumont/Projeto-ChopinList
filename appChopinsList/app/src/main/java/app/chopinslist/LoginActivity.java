@@ -7,31 +7,43 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import app.chopinslist.Models.User;
+import app.chopinslist.helper.dbHelper;
 
 public class LoginActivity extends AppCompatActivity {
     Button btn_logar, btn_cadastrar;
     EditText camp_login, camp_senha;
+    dbHelper db;
+    User u = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        db = new dbHelper(getApplicationContext());
+
+
+
         camp_login = (EditText) findViewById(R.id.camp_login);
         camp_senha = (EditText) findViewById(R.id.camp_senha);
         btn_cadastrar = (Button) findViewById(R.id.btn_cadastrar);
         btn_logar = (Button) findViewById(R.id.btn_logar);
 
+
+
         btn_logar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String login = camp_login.getText().toString();
                 String senha = camp_senha.getText().toString();
-               // if (login.equals("thomas")||login.equals("marcio") && senha.equals("123")) {
+                u.setLogin(login);
+                u.setSenha(senha);
+                if(db.verificaUsuario(u)){
                     Intent it = new Intent(LoginActivity.this, MenuActivity.class);
                     startActivity(it);
-              //  } else {
-                  //  alert("Login e/ou senha incorretos");
-                //}
+                 }else{
+                    alert("Login e/ou senha incorretos");
+                }
             }
         });
         btn_cadastrar.setOnClickListener(new View.OnClickListener() {

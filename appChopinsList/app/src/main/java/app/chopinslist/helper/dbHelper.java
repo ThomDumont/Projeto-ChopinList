@@ -75,16 +75,15 @@ public class dbHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(log, usuario.getLogin());
         values.put(sen, usuario.getSenha());
-
         db.insert(user, null, values);
 
     }
 
-    public boolean verificaUsuario(String login, String Senha) {
+    public boolean verificaUsuario(User u) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String busca = "SELECT  * FROM " + user + " WHERE "
-                + log + " = " + login + "AND" + sen + " = " + Senha;
+                + log + " = " + u.getLogin() + "AND" + sen + " = " + u.getSenha();
 
         Cursor c = db.rawQuery(busca, null);
 

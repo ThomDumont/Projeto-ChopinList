@@ -1,11 +1,16 @@
 package app.chopinslist.Models;
 
+
 public class User {
 
-    public User(){
+    public User() {
+    }
+    public User(String login, String senha) {
+        this.setLogin(login);
+        this.setSenha(senha);
     }
 
-    public User(int id, String login, String senha){
+    public User(int id, String login, String senha) {
         this.setId(id);
         this.setLogin(login);
         this.setSenha(senha);
@@ -38,4 +43,6 @@ public class User {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+
 }
