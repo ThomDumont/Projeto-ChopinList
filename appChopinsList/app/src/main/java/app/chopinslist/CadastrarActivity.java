@@ -13,7 +13,7 @@ import app.chopinslist.helper.dbHelper;
 
 public class CadastrarActivity extends AppCompatActivity {
 
-    EditText camp_addlogin, camp_addsenha;
+    EditText camp_addlogin, camp_addsenha, editEmail, editNome, editTelefone;
     Button btn_adduser;
     User usuario = new User();
     dbHelper db;
@@ -23,15 +23,21 @@ public class CadastrarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar);
         db = new dbHelper(getApplicationContext());
 
-        camp_addlogin = (EditText) findViewById(R.id.camp_addlogin);
-        camp_addsenha = (EditText) findViewById(R.id.camp_addsenha);
-        btn_adduser = (Button) findViewById(R.id.btn_adduser);
+        camp_addlogin = findViewById(R.id.camp_addlogin);
+        camp_addsenha = findViewById(R.id.camp_addsenha);
+        editEmail = findViewById(R.id.editEmail);
+        editNome = findViewById(R.id.editNome);
+        editTelefone = findViewById(R.id.editTelefone);
+        btn_adduser = findViewById(R.id.btn_adduser);
 
         btn_adduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 usuario.setLogin(camp_addlogin.getText().toString());
                 usuario.setSenha(camp_addsenha.getText().toString());
+                usuario.setEmail(editEmail.getText().toString());
+                usuario.setNome(editNome.getText().toString());
+                usuario.setTelefone(editTelefone.getText().toString());
                 db.createUsuarios(usuario);
                 db.closeDB();
                 alert("Criado com sucesso!");
