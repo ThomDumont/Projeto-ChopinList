@@ -27,17 +27,6 @@ public class CadastrarActivity extends AppCompatActivity {
         camp_addsenha = (EditText) findViewById(R.id.camp_addsenha);
         btn_adduser = (Button) findViewById(R.id.btn_adduser);
 
-
-        Intent intent = getIntent();
-        if(intent.hasExtra("usuario")) {
-            usuario = (User) intent.getSerializableExtra("usuario");
-            usuario.setLogin(camp_addlogin.getText().toString());
-            usuario.setSenha(camp_addsenha.getText().toString());
-
-        }
-
-
-
         btn_adduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

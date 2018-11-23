@@ -95,11 +95,12 @@ public class dbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public User buscaUsuario(String login) {
+    public User buscaUsuario(User q) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String busca = "SELECT  * FROM " + user + " WHERE "
-                + log + " = " + login;
+        String busca = "SELECT * FROM " + user + " WHERE "
+                + log + " = '" + q.getLogin() + "' AND " + sen + " = '" + q.getSenha() +"'" ;
+
 
         Cursor c = db.rawQuery(busca, null);
 
@@ -116,18 +117,41 @@ public class dbHelper extends SQLiteOpenHelper {
         return w;
     }
 
+    public Anuncio buscaAnun(Anuncio a) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String busca = "SELECT * FROM " + anun + " WHERE "
+                + tit + " = '" + a.getTitulo() + "' AND " + desc + " = '" + a.getDesc() +"'" ;
+
+
+        Cursor c = db.rawQuery(busca, null);
+
+        if(c != null) {
+            c.moveToFirst();
+        }
+
+        Anuncio w = new Anuncio();
+        w.setId(c.getInt(c.getColumnIndex(id)));
+        w.setTitulo(c.getString(c.getColumnIndex(tit)));
+        w.setDesc(c.getString(c.getColumnIndex(desc)));
+        c.close();
+
+        return w;
+    }
+
     public int attUser(User w) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        User completo = buscaUsuario(w);
         ContentValues values = new ContentValues();
-        values.put(log, w.getLogin());
-        values.put(sen, w.getSenha());
+        values.put(log, completo.getLogin());
+        values.put(sen, completo.getSenha());
 
         return db.update(user, values, id + " = ?",
-                new String[] { String.valueOf(w.getId()) });
+                new String[] { String.valueOf(completo.getId()) });
     }
 
-    public long createAnuncio(Anuncio Anun, long id_user) {
+    public long createAnuncio(Anuncio Anun) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -139,7 +163,7 @@ public class dbHelper extends SQLiteOpenHelper {
 
     public List<Anuncio> getallAnuncios() {
         List<Anuncio> todos = new ArrayList<>();
-        String pegatodos = "SELECT  * FROM " + anun;
+        String pegatodos = "SELECT * FROM " + anun;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(pegatodos, null);
@@ -160,19 +184,24 @@ public class dbHelper extends SQLiteOpenHelper {
     public int attAnun(Anuncio a) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        Anuncio completo = buscaAnun(a);
         ContentValues values = new ContentValues();
         values.put(tit, a.getTitulo());
         values.put(desc, a.getDesc());
 
         return db.update(anun, values, id + " = ?",
-                new String[] { String.valueOf(a.getId()) });
+                new String[] { String.valueOf(completo.getId()) });
     }
 
     public void createJunta(User u, long idAnun) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        User w = buscaUsuario(u);
+
+        db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(id_user, u.getId());
+        values.put(id_user, w.getId());
         values.put(id_anun, idAnun);
 
         db.insert(junta, null, values);
@@ -180,11 +209,11 @@ public class dbHelper extends SQLiteOpenHelper {
     }
 
     public List<Anuncio> buscaAnunUsu(User u) {
-
+        User usucompleto = buscaUsuario(u);
         List<Anuncio> todos = new ArrayList<>();
         ArrayList idAnuns = new ArrayList<>();
-        String pegaIdAnun = "SELECT * FROM " + junta + "WHERE" +
-                id_user + " = " + u.getId();
+        String pegaIdAnun = "SELECT * FROM " + junta + " WHERE " +
+                id_user + " = " + usucompleto.getId();
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(pegaIdAnun, null);

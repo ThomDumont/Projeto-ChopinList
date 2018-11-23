@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.Serializable;
+
 import app.chopinslist.Models.User;
 import app.chopinslist.helper.dbHelper;
 
@@ -20,22 +23,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
-
-        camp_login = (EditText) findViewById(R.id.camp_login);
-        camp_senha = (EditText) findViewById(R.id.camp_senha);
-        btn_cadastrar = (Button) findViewById(R.id.btn_cadastrar);
-        btn_logar = (Button) findViewById(R.id.btn_logar);
-
-
+        camp_login = findViewById(R.id.camp_login);
+        camp_senha = findViewById(R.id.camp_senha);
+        btn_cadastrar = findViewById(R.id.btn_cadastrar);
+        btn_logar = findViewById(R.id.btn_logar);
 
         btn_logar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String login = camp_login.getText().toString();
                 String senha = camp_senha.getText().toString();
-                if(db.verificaUsuario(new User(login,senha))){
+                User w = new User(login,senha);
+                if(db.verificaUsuario(w)){
                     Intent it = new Intent(LoginActivity.this, MenuActivity.class);
+                    it.putExtra("usu", (Serializable) w);
                     startActivity(it);
                 }else{
                     alert("Login e/ou senha incorretos");
@@ -54,4 +54,3 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this,s,Toast.LENGTH_LONG).show();
     }
 }
-

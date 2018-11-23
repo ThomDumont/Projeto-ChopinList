@@ -13,5 +13,7 @@
     <string name="txt_tituloanuncio">Digite o título do anúncio:</string>
     <string name="txt_descricaoanuncio">Digite a descrição do anúncio:</string>
     <string name="txt_criarA">Anúnciar!</string>
+    <string name="txt_tit">Título do anúncio:</string>
+    <string name="txt_desc">Descrição do anúncio:</string>
 
 </resources>

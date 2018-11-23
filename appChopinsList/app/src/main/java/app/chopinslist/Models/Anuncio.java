@@ -1,12 +1,19 @@
 package app.chopinslist.Models;
 
-public class Anuncio {
+import java.io.Serializable;
+
+public class Anuncio implements Serializable {
 
     private int id;
     private String titulo;
     private String desc;
 
     public Anuncio(){
+    }
+
+    public Anuncio( String titulo, String desc){
+        this.setTitulo(titulo);
+        this.setDesc(desc);
     }
 
 
