@@ -1,6 +1,9 @@
 package app.chopinslist;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,8 +24,7 @@ public class mAnunciosActivity extends AppCompatActivity {
 
     ListView listView;
     dbHelper db = new dbHelper(this);
-
-    User u = new User();
+    User u;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,30 @@ public class mAnunciosActivity extends AppCompatActivity {
                 Anuncio anun = anuncios.get(position);
                 Intent intent = new Intent(mAnunciosActivity.this, mAnunDetalhesActivity.class);
                 intent.putExtra("anun", anun);
+                intent.putExtra("usuario", u);
                 startActivity(intent);
-                carregarListagem();
+            }
+        });
+
+        listView.setOnItemLongClickListener(new ListView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                final Context ctx = view.getContext();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+                builder.setTitle("Confirmação").setMessage("Tem certeza que deseja excluir este anúncio?").setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        List<Anuncio> anuncios = db.buscaAnunUsu(u);
+                        Anuncio anun = anuncios.get(position);
+                        db.delAnun(anun);
+                        carregarListagem();
+                        db.closeDB();
+                        Toast.makeText(ctx, "anúncio excluído com sucesso!", Toast.LENGTH_LONG).show();
+                    }
+                }).setNegativeButton("Cancelar", null).create().show();
+                return false;
             }
         });
 

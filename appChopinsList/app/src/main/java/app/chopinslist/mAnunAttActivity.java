@@ -8,13 +8,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import app.chopinslist.Models.Anuncio;
+import app.chopinslist.Models.User;
 import app.chopinslist.helper.dbHelper;
 
 public class mAnunAttActivity extends AppCompatActivity {
 
     Button att;
     TextView tit, desc;
-    Anuncio a = new Anuncio();
+    Anuncio anun;
+    User u;
     dbHelper db = new dbHelper(this);
 
     @Override
@@ -25,10 +27,8 @@ public class mAnunAttActivity extends AppCompatActivity {
         att = findViewById(R.id.btnATT);
         tit = findViewById(R.id.txt_titulo2);
         desc = findViewById(R.id.txt_descricao2);
-        a = (Anuncio) getIntent().getSerializableExtra("anun");
-
-        tit.setText(a.getTitulo());
-        desc.setText(a.getDesc());
+        anun = (Anuncio) getIntent().getSerializableExtra("anun");
+        u = (User) getIntent().getSerializableExtra("usuario");
 
         att.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,15 +36,13 @@ public class mAnunAttActivity extends AppCompatActivity {
 
                 String titulo = tit.getText().toString();
                 String descri = desc.getText().toString();
-                Anuncio b = new Anuncio();
-                b = db.buscaAnun(a);
+                Anuncio b;
+                b = db.buscaAnun(anun);
                 b.setTitulo(titulo);
                 b.setDesc(descri);
-                db.attAnun(a);
+                db.attAnun(anun);
                 alert("Anúncio atualizado!!");
                 db.closeDB();
-                getParent().getIntent();
-                finish();
             }
         });
 

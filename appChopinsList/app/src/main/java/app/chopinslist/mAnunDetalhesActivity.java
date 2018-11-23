@@ -13,13 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import app.chopinslist.Models.Anuncio;
+import app.chopinslist.Models.User;
 import app.chopinslist.helper.dbHelper;
 
 public class mAnunDetalhesActivity extends AppCompatActivity {
 
     TextView tit,desc;
-
+    Anuncio anun;
+    User u;
     Button att, del;
+
     dbHelper db;
 
     @Override
@@ -32,7 +35,8 @@ public class mAnunDetalhesActivity extends AppCompatActivity {
 
         tit = findViewById(R.id.textTit);
         desc = findViewById(R.id.textDesc);
-        final Anuncio anun = (Anuncio) getIntent().getSerializableExtra("anun");
+        anun = (Anuncio) getIntent().getSerializableExtra("anun");
+        u = (User) getIntent().getSerializableExtra("usuario");
 
         tit.setText(anun.getTitulo());
         desc.setText(anun.getDesc());
@@ -43,30 +47,8 @@ public class mAnunDetalhesActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(mAnunDetalhesActivity.this, mAnunAttActivity.class);
                 intent.putExtra("anun", anun);
+                intent.putExtra("usu", u);
                 startActivity(intent);
-            }
-        });
-
-        del.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final Context ctx = v.getContext();
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-                builder.setTitle("Confirmação").setMessage("Tem certeza que deseja excluir este anúncio?");
-                builder.setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Anuncio a = new Anuncio();
-                        a.setTitulo(anun.getTitulo());
-                        a.setDesc(anun.getDesc());
-                        db.delAnun(a);
-                        db.closeDB();
-                        finish();
-                    }
-                });
-                builder.setNegativeButton("Cancelar", null);
-                builder.create().show();
             }
         });
     }
