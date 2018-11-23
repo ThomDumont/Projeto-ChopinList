@@ -15,5 +15,8 @@
     <string name="txt_criarA">Anúnciar!</string>
     <string name="txt_tit">Título do anúncio:</string>
     <string name="txt_desc">Descrição do anúncio:</string>
+    <string name="btn_deletar">Deletar anúncio</string>
+    <string name="btn_att">Atualizar anúncio</string>
+    <string name="btn_att2">Atualizar</string>
 
 </resources>

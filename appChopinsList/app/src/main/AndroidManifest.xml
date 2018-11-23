@@ -23,7 +23,9 @@
         <activity android:name=".AnunciarActivity" />
         <activity android:name=".vAnunciosActivity" />
         <activity android:name=".mAnunciosActivity" />
-        <activity android:name=".AnunDetalhesActivity"></activity>
+        <activity android:name=".AnunDetalhesActivity" />
+        <activity android:name=".mAnunDetalhesActivity" />
+        <activity android:name=".mAnunAttActivity"></activity>
     </application>
 
 </manifest>

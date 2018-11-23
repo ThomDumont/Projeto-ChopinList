@@ -31,7 +31,8 @@ public class vAnunciosActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Anuncio anun = (Anuncio) listView.getItemAtPosition(position);
+                List<Anuncio> anuncios = db.getallAnuncios();
+                Anuncio anun = anuncios.get(position);
                 Intent intent = new Intent(vAnunciosActivity.this, AnunDetalhesActivity.class);
                 intent.putExtra("anun", anun);
                 startActivity(intent);
@@ -44,7 +45,7 @@ public class vAnunciosActivity extends AppCompatActivity {
     public void carregarListagem(){
         List<Anuncio> anuncios = db.getallAnuncios();
         if(anuncios.size() == 0){
-            Toast.makeText(this, "Nenhum cliente cadastrado!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Nenhum anúncio postado!", Toast.LENGTH_SHORT).show();
         }
 
         List<String> titulos = new ArrayList<>();

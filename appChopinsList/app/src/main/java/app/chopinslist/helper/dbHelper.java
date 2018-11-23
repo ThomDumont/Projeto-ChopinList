@@ -181,16 +181,14 @@ public class dbHelper extends SQLiteOpenHelper {
         return todos;
     }
 
-    public int attAnun(Anuncio a) {
+    public void attAnun(Anuncio a) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Anuncio completo = buscaAnun(a);
         ContentValues values = new ContentValues();
         values.put(tit, a.getTitulo());
         values.put(desc, a.getDesc());
 
-        return db.update(anun, values, id + " = ?",
-                new String[] { String.valueOf(completo.getId()) });
+        db.update(anun, values, id + " = " + a.getId(),null);
     }
 
     public void createJunta(User u, long idAnun) {
@@ -226,25 +224,35 @@ public class dbHelper extends SQLiteOpenHelper {
 
         pegaIdAnun = "SELECT * FROM " + anun + " WHERE " + id + "= ?";
 
-        for(int i = 0; i<idAnuns.size();i++){
-            Cursor w = db.rawQuery(pegaIdAnun, new String[]{String.valueOf(idAnuns.indexOf(i))});
-            if(w != null) {
+        for (int i = 0; i < idAnuns.size(); i++){
+            Cursor w = db.rawQuery(pegaIdAnun, new String[]{String.valueOf(idAnuns.get(i))});
+            if (w != null) {
                 w.moveToFirst();
+                Anuncio a = new Anuncio();
+                a.setId(w.getInt(w.getColumnIndex(id)));
+                a.setTitulo(w.getString(w.getColumnIndex(tit)));
+                a.setDesc(w.getString(w.getColumnIndex(desc)));
+                todos.add(a);
+                w.close();
             }
-            Anuncio a = new Anuncio();
-            a.setId(c.getInt((w.getColumnIndex(id))));
-            a.setTitulo(c.getString(w.getColumnIndex(tit)));
-            a.setDesc(c.getString(w.getColumnIndex(desc)));
-            todos.add(a);
-            w.close();
         }
         c.close();
 
         return todos;
-
     }
 
-    public void closeDB() {
+    public void delAnun(Anuncio a){
+        Anuncio completo = buscaAnun(a);
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(anun, id + " = ?",
+                new String[] {String.valueOf(completo.getId())});
+        db.delete(junta, id_anun + " = ?",
+                new String[] {String.valueOf(completo.getId())});
+    }
+
+
+    public void closeDB(){
         SQLiteDatabase db = this.getReadableDatabase();
         if (db != null && db.isOpen())
             db.close();

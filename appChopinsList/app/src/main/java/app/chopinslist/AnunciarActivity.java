@@ -24,9 +24,9 @@ public class AnunciarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anunciar);
 
-        txt_titulo = findViewById(R.id.txt_titulo);
-        txt_descricao = findViewById(R.id.txt_descricao);
-        btnAnunc = findViewById(R.id.btnAnunc);
+        txt_titulo = findViewById(R.id.txt_titulo2);
+        txt_descricao = findViewById(R.id.txt_descricao2);
+        btnAnunc = findViewById(R.id.btnATT);
         u  = (User) getIntent().getSerializableExtra("usuario");
 
         btnAnunc.setOnClickListener(new View.OnClickListener() {
