@@ -148,17 +148,6 @@ public class dbHelper extends SQLiteOpenHelper {
         return w;
     }
 
-    public int attUser(User w) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        User completo = buscaUsuario(w);
-        ContentValues values = new ContentValues();
-        values.put(log, completo.getLogin());
-        values.put(sen, completo.getSenha());
-
-        return db.update(user, values, id + " = ?",
-                new String[] { String.valueOf(completo.getId()) });
-    }
 
     public long createAnuncio(Anuncio Anun) {
         SQLiteDatabase db = this.getWritableDatabase();
