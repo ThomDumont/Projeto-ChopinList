@@ -4,33 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mAnunAttActivity">
+    tools:context=".mAnunAttActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/txt_tituloanuncio"
         app:layout_constraintBottom_toTopOf="@+id/txt_titulo2"
-        app:layout_constraintStart_toStartOf="@+id/txt_titulo2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <EditText
         android:id="@+id/txt_titulo2"
-        android:layout_width="0dp"
+        android:layout_width="352dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="27dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -40,7 +39,7 @@
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/txt_descricaoanuncio"
         app:layout_constraintBottom_toTopOf="@+id/txt_descricao2"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,17 +47,14 @@
 
     <EditText
         android:id="@+id/txt_descricao2"
-        android:layout_width="0dp"
+        android:layout_width="352dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="13dp"
         android:ems="10"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/btnATT"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -72,5 +68,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_descricao2" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="36dp"
+        android:text="ATUALIZE SEU ANÚNCIO"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
