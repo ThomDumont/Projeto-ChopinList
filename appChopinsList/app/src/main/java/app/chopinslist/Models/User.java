@@ -13,15 +13,21 @@ public class User implements Serializable {
         this.setSenha(senha);
     }
 
-    public User(int id, String login, String senha) {
+    public User(int id, String login, String senha, String email, String nome, String telefone ) {
         this.setId(id);
         this.setLogin(login);
         this.setSenha(senha);
+        this.setEmail(email);
+        this.setNome(nome);
+        this.setTelefone(telefone);
     }
 
     private int id;
     private String login;
     private String senha;
+    private String email;
+    private String nome;
+    private String telefone;
 
     public int getId() {
         return id;
@@ -48,4 +54,27 @@ public class User implements Serializable {
     }
 
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 }

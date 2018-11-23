@@ -27,9 +27,13 @@ public class dbHelper extends SQLiteOpenHelper {
     private static final String tit = "titulo";
     private static final String desc = "descricao";
 
+
     //tabela usuario
     private static final String log = "login";
     private static final String sen = "senha";
+    private static final String ema = "email";
+    private static final String nom = "nome";
+    private static final String tele = "telefone";
 
     //tabela junta
     private static final String id_user = "userID";
@@ -39,9 +43,8 @@ public class dbHelper extends SQLiteOpenHelper {
 
     private static final String tabela_usuarios = "CREATE TABLE "
             + user + "(" + id + " INTEGER PRIMARY KEY," + log
-            + " TEXT," + sen + " TEXT)";
+            + " TEXT," + sen + " TEXT," + ema + " TEXT," + nom + " TEXT," + tele + " TEXT)";
 
-    // Tag table create statement
     private static final String tabela_anuncios = "CREATE TABLE "
             + anun + "(" + id + " INTEGER PRIMARY KEY," + tit
             + " TEXT," + desc + " TEXT)";
@@ -74,6 +77,9 @@ public class dbHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(log, usuario.getLogin());
         values.put(sen, usuario.getSenha());
+        values.put(ema, usuario.getEmail());
+        values.put(nom, usuario.getNome());
+        values.put(tele, usuario.getTelefone());
         db.insert(user, null, values);
 
     }
@@ -112,6 +118,9 @@ public class dbHelper extends SQLiteOpenHelper {
         w.setId(c.getInt(c.getColumnIndex(id)));
         w.setLogin(c.getString(c.getColumnIndex(log)));
         w.setSenha(c.getString(c.getColumnIndex(sen)));
+        w.setEmail(c.getString(c.getColumnIndex(ema)));
+        w.setNome(c.getString(c.getColumnIndex(nom)));
+        w.setTelefone(c.getString(c.getColumnIndex(tele)));
         c.close();
 
         return w;

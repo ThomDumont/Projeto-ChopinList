@@ -25,7 +25,8 @@
         <activity android:name=".mAnunciosActivity" />
         <activity android:name=".AnunDetalhesActivity" />
         <activity android:name=".mAnunDetalhesActivity" />
-        <activity android:name=".mAnunAttActivity"></activity>
+        <activity android:name=".mAnunAttActivity" />
+        <activity android:name=".PerfilActivity"></activity>
     </application>
 
 </manifest>

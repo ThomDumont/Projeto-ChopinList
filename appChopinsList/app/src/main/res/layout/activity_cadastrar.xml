@@ -20,7 +20,7 @@
     <EditText
         android:id="@+id/camp_addsenha"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="29dp"
         android:layout_marginTop="11dp"
         android:ems="10"
         android:inputType="textPassword"
@@ -39,7 +39,7 @@
     <EditText
         android:id="@+id/camp_addlogin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"

@@ -41,13 +41,13 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-     /*   btn_config.setOnClickListener(new View.OnClickListener() {
+        btn_config.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(MenuActivity.this, Config.class);
+                Intent it = new Intent(MenuActivity.this, PerfilActivity.class);
                 startActivity(it);
             }
-        });*/
+        });
 
         btn_mAnuncios.setOnClickListener(new View.OnClickListener() {
             @Override
