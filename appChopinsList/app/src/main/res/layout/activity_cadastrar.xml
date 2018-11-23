@@ -24,11 +24,13 @@
         android:id="@+id/camp_addsenha"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
@@ -45,7 +47,7 @@
         android:id="@+id/camp_addlogin"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="7dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
@@ -61,7 +63,6 @@
         android:text="@string/txt_criarC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTelefone" />
 
@@ -71,9 +72,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="48dp"
         android:text="Digite seu email:"
-        app:layout_constraintBottom_toTopOf="@+id/editEmail"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/camp_addsenha" />
 
@@ -87,7 +88,7 @@
         android:text="Digite seu nome:"
         app:layout_constraintBottom_toTopOf="@+id/editNome"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
         android:id="@+id/textView15"
@@ -103,14 +104,15 @@
     <EditText
         android:id="@+id/editEmail"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="9dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="26dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintBottom_toTopOf="@+id/editNome"
         app:layout_constraintEnd_toEndOf="@+id/editNome"
         app:layout_constraintStart_toStartOf="@+id/editTelefone"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toTopOf="@+id/textView13" />
 
     <EditText
         android:id="@+id/editNome"
@@ -118,7 +120,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="19dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/textView15"
@@ -131,7 +133,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/btn_adduser"
