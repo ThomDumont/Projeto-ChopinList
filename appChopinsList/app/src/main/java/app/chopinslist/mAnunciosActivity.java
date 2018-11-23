@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -45,31 +46,12 @@ public class mAnunciosActivity extends AppCompatActivity {
                 Intent intent = new Intent(mAnunciosActivity.this, mAnunDetalhesActivity.class);
                 intent.putExtra("anun", anun);
                 intent.putExtra("usuario", u);
-                startActivity(intent);
+
+                startActivityForResult(intent, 1);
             }
         });
 
-        listView.setOnItemLongClickListener(new ListView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                final Context ctx = view.getContext();
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-                builder.setTitle("Confirmação").setMessage("Tem certeza que deseja excluir este anúncio?").setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        List<Anuncio> anuncios = db.buscaAnunUsu(u);
-                        Anuncio anun = anuncios.get(position);
-                        db.delAnun(anun);
-                        carregarListagem();
-                        db.closeDB();
-                        Toast.makeText(ctx, "anúncio excluído com sucesso!", Toast.LENGTH_LONG).show();
-                    }
-                }).setNegativeButton("Cancelar", null).create().show();
-                return false;
-            }
-        });
 
     }
 
@@ -88,6 +70,24 @@ public class mAnunciosActivity extends AppCompatActivity {
         ArrayAdapter<String> anunAdapter =
                 new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, titulos);
         listView.setAdapter(anunAdapter);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                Anuncio mudado = (Anuncio) data.getSerializableExtra("anun3");
+                db.attAnun(mudado);
+                carregarListagem();
+                db.closeDB();
+            }
+            if(resultCode == 1) {
+                Anuncio mudado = (Anuncio) data.getSerializableExtra("anun7");
+                db.delAnun(mudado);
+                carregarListagem();
+                db.closeDB();
+            }
+        }
     }
 
     @Override

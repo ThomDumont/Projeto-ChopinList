@@ -1,5 +1,6 @@
 package app.chopinslist;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,9 @@ public class mAnunAttActivity extends AppCompatActivity {
         anun = (Anuncio) getIntent().getSerializableExtra("anun");
         u = (User) getIntent().getSerializableExtra("usuario");
 
+        tit.setText(anun.getTitulo());
+        desc.setText(anun.getDesc());
+
         att.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,9 +44,11 @@ public class mAnunAttActivity extends AppCompatActivity {
                 b = db.buscaAnun(anun);
                 b.setTitulo(titulo);
                 b.setDesc(descri);
-                db.attAnun(anun);
+                Intent it = new Intent();
+                it.putExtra("anunmuda", b);
+                setResult(RESULT_OK, it);
                 alert("Anúncio atualizado!!");
-                db.closeDB();
+                finish();
             }
         });
 

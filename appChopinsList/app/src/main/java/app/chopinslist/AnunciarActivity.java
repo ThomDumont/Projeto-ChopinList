@@ -38,6 +38,7 @@ public class AnunciarActivity extends AppCompatActivity {
                 long w = db.createAnuncio(a);
                 db.createJunta(u, w);
                 alert("Anúncio postado!!");
+                finish();
                 db.closeDB();
             }
         });
